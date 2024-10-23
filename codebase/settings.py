@@ -402,6 +402,10 @@ else:
         },
     }
 
+CSRF_TRUSTED_ORIGINS = [
+    "https://demo-89grad.ramiboutas.com",
+]
+
 
 # Https
 if HTTPS:  # pragma: no cover
