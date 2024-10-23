@@ -1,4 +1,3 @@
-import subprocess
 from io import StringIO
 
 from django.conf import settings
@@ -22,12 +21,3 @@ def django_commands_dairly():
     call_command("check", deploy=True, stdout=out, stderr=err)
 
     Bot.to_admin(f"Django commands\n\nstdout=\n{out.getvalue()}\n\nstderr:{err.getvalue()}\n")
-
-
-@huey.db_periodic_task(crontab(hour="0", minute="10"))
-def fetch_submodules_dairly():
-    ok = subprocess.call(["git", "submodule", "update", "--remote"]) == 0
-
-    emoji_ok = "✅" if ok else "🔴"
-
-    Bot.to_admin(f"{emoji_ok} Submodules fetched")

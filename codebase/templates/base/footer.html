@@ -1,0 +1,37 @@
+{% load i18n %}
+<footer>
+  {% for item in footer_items %}
+    <aside class="col">
+      <p>
+        <strong>{{ item.title }}</strong>
+      </p>
+      <nav>
+        <ul>
+          {% for link in item.pagelink_set.all %}
+            <li>
+              <a href="{{ link.url }}"
+                 {% if link.target_blank %}target="_blank"{% endif %}>{{ link.title }}</a>
+            </li>
+          {% endfor %}
+        </ul>
+      </nav>
+    </aside>
+  {% endfor %}
+  <!-- Change language -->
+  <form class="row mt-3" action="{% url 'set_language' %}" method="post">
+    {% csrf_token %}
+    <input name="next" type="hidden" value="{{ redirect_to }}">
+    <select class="col mx-2" name="language">
+      {% get_current_language as LANGUAGE_CODE %}
+      {% get_available_languages as LANGUAGES %}
+      {% get_language_info_list for LANGUAGES as languages %}
+      {% for language in languages %}
+        <option value="{{ language.code }}"
+                {% if language.code == LANGUAGE_CODE %}selected{% endif %}>
+          {{ language.name_local }} ({{ language.code }})
+        </option>
+      {% endfor %}
+    </select>
+    <input class="col mx-2" type="submit" value='{% trans "Go" %}'>
+  </form>
+</footer>

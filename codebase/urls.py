@@ -21,11 +21,10 @@ from django.urls import include, path
 urlpatterns = [
     # Django
     path("admin/", admin.site.urls),
+    path("i18n/", include("django.conf.urls.i18n")),
     # Third-party
     path("allauth/", include("allauth.urls")),
     # Own
-    path("a/", include("codebase.articles.urls")),
-    path("p/", include("codebase.pages.urls")),
     path("u/", include("codebase.users.urls")),
     path("", include("codebase.base.urls")),
 ]

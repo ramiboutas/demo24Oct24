@@ -11,16 +11,16 @@
     </li>
   </ul>
   <ul>
-    {% for category in nav_categories %}
+    {% for item in navbar_items %}
       <li>
         <details class="dropdown">
-          <summary>{{ category.name }}</summary>
+          <summary>{{ item.title }}</summary>
           <ul dir="rtl">
-            {% for nav_link in category.nav_links %}
+            {% for page_link in item.pagelink_set.all %}
               <li>
-                <a href="{{ nav_link.url }}"
+                <a href="{{ page_link.url }}"
                    class="contrast"
-                   {% if nav_link.new_tab %}target="_blank"{% endif %}>{{ nav_link.name }}</a>
+                   {% if page_link.new_tab %}target="_blank"{% endif %}>{{ page_link.title }}</a>
               </li>
             {% endfor %}
           </ul>

@@ -47,6 +47,9 @@ USE_S3 = os.environ.get("USE_S3", "") == "1"
 
 USE_POSTGRES = os.environ.get("USE_POSTGRES", "") == "1"
 
+# Enable caching
+
+ENABLE_CACHING = os.environ.get("ENABLE_CACHING", "") == "1"
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
@@ -66,7 +69,6 @@ DEBUG = os.environ.get("DEBUG", "") == "1"
 
 ALLOWED_HOSTS = [
     "127.0.0.1",
-    "10.10.10.30",
 ]
 
 
@@ -90,13 +92,11 @@ INSTALLED_APPS = [
     "rosetta",
     "allauth",
     "allauth.account",
-    # "allauth.socialaccount",
-    # "allauth.socialaccount.providers.google",
-    # "allauth.socialaccount.providers.linkedin_oauth2",
+    "allauth.socialaccount",
+    "allauth.socialaccount.providers.google",
+    "allauth.socialaccount.providers.linkedin_oauth2",
     # Project apps
     "codebase.base",
-    "codebase.articles",
-    "codebase.pages",
     "codebase.users",
 ]
 
@@ -111,8 +111,6 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     # third-party middlewares
     "allauth.account.middleware.AccountMiddleware",
-    # own middlewares
-    "codebase.base.middleware.CountryMiddleware",
 ]
 
 ROOT_URLCONF = "codebase.urls"
@@ -142,7 +140,7 @@ WSGI_APPLICATION = "codebase.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
-if USE_POSTGRES:
+if USE_POSTGRES:  # pragma: no cover
     DATABASES = {
         "default": {
             "ENGINE": "django.db.backends.postgresql",
@@ -216,12 +214,14 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 # Server-side cache settings. Do not confuse with front-end cache.
 # https://docs.djangoproject.com/en/stable/topics/cache/
 
-CACHES = {
-    "default": {
-        "BACKEND": "django.core.cache.backends.redis.RedisCache",
-        "LOCATION": os.environ.get("REDIS_URL", "redis://127.0.0.1:6379"),
+
+if ENABLE_CACHING:  # pragma: no cover
+    CACHES = {
+        "default": {
+            "BACKEND": "django.core.cache.backends.redis.RedisCache",
+            "LOCATION": os.environ.get("REDIS_URL", "redis://127.0.0.1:6379"),
+        }
     }
-}
 
 
 """
@@ -371,7 +371,7 @@ TELEGRAM_ADMIN_CHAT_ID = os.environ.get("TELEGRAM_ADMIN_CHAT_ID")
 
 # Static files that Django needs to find because they are not in the app static folders
 STATICFILES_DIRS = [
-    BASE_DIR / "submodules" / "static" / "src",
+    BASE_DIR / "static",
 ]
 
 # S3 auth and bucket parameters
@@ -400,7 +400,7 @@ STATIC_ROOT = BASE_DIR / "staticfiles"
 STATIC_URL = "/static/"
 
 # Storage backends
-if USE_S3:
+if USE_S3:  # pragma: no cover
     STORAGES = {
         "default": {"BACKEND": S3_MEDIA_STORAGE_BACKEND},
         "staticfiles": {"BACKEND": S3_STATIC_STORAGE_BACKEND},
@@ -431,5 +431,5 @@ if HTTPS:  # pragma: no cover
 
 # Test mode (override values)
 
-if command == "test":
+if command == "test":  # pragma: no cover
     pass

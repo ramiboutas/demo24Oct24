@@ -10,11 +10,7 @@ class User(AbstractUser):
 
     @cached_property
     def delete_account_url(self):
-        return reverse("account_delete", kwargs={"id": self.id})
-
-    @cached_property
-    def fullname(self):
-        return self.first_name + " " + self.last_name
+        return reverse("user-delete", kwargs={"id": self.id})
 
     def __str__(self) -> str:
-        return f"User ({self.username} - {self.email})"
+        return f"{self.username} | {self.email}"
