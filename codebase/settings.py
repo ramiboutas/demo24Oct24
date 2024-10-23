@@ -47,9 +47,6 @@ USE_S3 = os.environ.get("USE_S3", "") == "1"
 
 USE_POSTGRES = os.environ.get("USE_POSTGRES", "") == "1"
 
-# Enable caching
-
-ENABLE_CACHING = os.environ.get("ENABLE_CACHING", "") == "1"
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
@@ -210,19 +207,6 @@ LANGUAGE_CODES_WITHOUT_DEFAULT = ["de", "es"]
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
-
-# Caching
-# Server-side cache settings. Do not confuse with front-end cache.
-# https://docs.djangoproject.com/en/stable/topics/cache/
-
-
-if ENABLE_CACHING:  # pragma: no cover
-    CACHES = {
-        "default": {
-            "BACKEND": "django.core.cache.backends.redis.RedisCache",
-            "LOCATION": os.environ.get("REDIS_URL", "redis://127.0.0.1:6379"),
-        }
-    }
 
 
 """
