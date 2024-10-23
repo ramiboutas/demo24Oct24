@@ -1,0 +1,35 @@
+# Django and third-party apps
+django
+django-auto-prefetch
+django-cleanup
+django-extensions
+django-rosetta
+django-o365mail
+django-modeltranslation
+django-upgrade
+django-markdownx
+django-storages
+django_htmx
+# django-allauth[socialaccount]
+django-allauth
+boto3
+pillow
+huey
+redis
+
+# Management
+python-dotenv
+gunicorn
+ipython
+
+# Testing and faking data
+coverage[toml]
+factory-boy
+
+# Code formatting
+black
+pyclean
+isort
+ruff
+djade
+djlint
