@@ -1,6 +1,5 @@
 import datetime
 
-from django.contrib.auth.decorators import login_required, permission_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404, render
@@ -11,8 +10,6 @@ from .forms import RenewBookForm
 from .models import Author, Book, BookInstance
 
 
-@login_required
-@permission_required("catalog.can_mark_returned", raise_exception=True)
 def index(request):
     """View function for home page of site."""
 

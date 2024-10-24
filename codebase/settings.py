@@ -91,6 +91,7 @@ INSTALLED_APPS = [
     "allauth",
     "allauth.account",
     "allauth.socialaccount",
+    "allauth.mfa",
     "allauth.socialaccount.providers.google",
     "allauth.socialaccount.providers.linkedin_oauth2",
     # Project apps
