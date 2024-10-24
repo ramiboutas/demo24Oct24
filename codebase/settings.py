@@ -96,6 +96,7 @@ INSTALLED_APPS = [
     # Project apps
     "codebase.base",
     "codebase.users",
+    "codebase.catalog",
 ]
 
 MIDDLEWARE = [
@@ -323,18 +324,17 @@ Project settings
 
 # Website
 
-WEBSITE_NAME = "Example site"
+WEBSITE_NAME = "Bibliothek"
 WEBSITE_URL = "http://127.0.0.1/"
-WEBSITE_EMOJI = "🍊"
-WEBSITE_DEFAULT_PAGE_TITLE = _("Default page title")
+WEBSITE_EMOJI = "📚"
+WEBSITE_DEFAULT_PAGE_TITLE = _("My library")
 WEBSITE_DEFAULT_PAGE_DESCRIPTION = _("Default page desciption")
-WEBSITE_DEFAULT_PAGE_KEYWORDS = _("Default page keywords")
+WEBSITE_DEFAULT_PAGE_KEYWORDS = _("books, library, author,")
 
 # PicoCSS version
 # https://picocss.com/docs/version-picker
 
-MAIN_STATIC_CSS_FILE = "css/picocss/pico.orange.min.css"
-
+MAIN_STATIC_CSS_FILE = "css/picocss/pico.green.min.css"
 
 # Submodules
 
@@ -351,6 +351,12 @@ SYNC_PAGE_FOLDERS = ("general-pages",)
 
 TELEGRAM_BOT_API_KEY = os.environ.get("TELEGRAM_BOT_API_KEY")
 TELEGRAM_ADMIN_CHAT_ID = os.environ.get("TELEGRAM_ADMIN_CHAT_ID")
+
+# Whatsapp
+# TODO: set up!
+WHATSAPP_API_ACCESS_TOKEN = os.environ.get("WHATSAPP_BUSINESS_PHONE_NUMBER_ID")
+WHATSAPP_BUSINESS_PHONE_NUMBER_ID = os.environ.get("WHATSAPP_BUSINESS_PHONE_NUMBER_ID")
+
 
 # Storage of static and media files
 

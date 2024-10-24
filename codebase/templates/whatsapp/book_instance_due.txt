@@ -1,0 +1,11 @@
+{% load i18n %}
+
+{% blocktranslate with name=book_instance.borrower.first_name title=book_instance.book.title %}
+Hi {{ name }}.
+
+The book you have borrowed ({{ title}}) is due.
+
+Please return it as soon as you can, thanks!
+
+{% endblocktranslate %}
+

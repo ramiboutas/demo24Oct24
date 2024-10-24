@@ -26,5 +26,6 @@ urlpatterns = [
     path("allauth/", include("allauth.urls")),
     # Own
     path("u/", include("codebase.users.urls")),
+    path("", include("codebase.catalog.urls")),
     path("", include("codebase.base.urls")),
 ]

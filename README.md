@@ -1,35 +1,23 @@
-# django-project-template
+
+# Bibliotheks-Management-System
+
+## Intro
+
+Darin befinden sich Bücher mit Autor:innen und weiteren Attributen (nach Deiner Wahl).
+Darin gibt es Prozesse, wie Bücher-Ausleihe. Implementiere die 3 wichtigsten Prozesse.
+Dazu gibt es ein Admin-Interface, über welches die Bücher von der/m Bibliothekar:in verwaltet werden können.
 
 
-## Conventions
+## Zusatzaufgaben:
 
+1. Überlege Dir Features für das Bibliothek-Management-System, welche Du einem/r Kund:in vorschlagen würdest. Mache eine Aufwand- und eine Kostenschätzung für die Features, welche Du Dir überlegt hast.
 
-### Background tasks
+2. API: Biete die Bücher über eine REST API für externe Anwendungen an. Überlegt Dir, was Du über die API anbieten willst und was nicht.
 
-#### Name
+✅ 3. Frontend: Erstelle mit einem passenden Framework ein schönes Frontend für Endkund:innen, wo z.B. Bücher gesucht werden können.
 
-* Standard Task: `<do_something>_task`
-* Periodic tasks:
-  * Weekly task: `<do_something>_weekly`
-  * Dairly task: `<do_something>_darily`
-  * Hourly task: `<do_something>_hourly`
-  * Every X minutes Task : `<do_something>_every_X_min`
+✅ 4. Email Benachrichtigung an Endkund:innen, wenn ein Buch wieder zur Ausleihe zur Verfügung steht.
 
+✅ 5. Reminder: Whatsapp-Versand an Kund:in 2 Tage nach Ablauf der Ausleihdauer.
 
-
-## Create a new database in Postgres
-
-
-```shell
-sudo -u postgres psql
-```
-
-```shell
-CREATE DATABASE mydata_db;
-CREATE USER my_db_user WITH PASSWORD 'Secure-Password-Here';
-ALTER ROLE my_db_user SET client_encoding TO 'utf8';
-ALTER ROLE my_db_user SET timezone TO 'UTC';
-ALTER ROLE my_db_user SET default_transaction_isolation TO 'read committed';
-GRANT ALL PRIVILEGES ON DATABASE mydata_db TO my_db_user;
-
-```
+1. Implementiere eine 2FA für die User.

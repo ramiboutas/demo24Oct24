@@ -1,0 +1,11 @@
+{% load i18n %}
+
+{% blocktranslate with name=user.first_name title=book.title  %}
+Hi {{ name }}.
+
+The book you have requested ({{ title}}) is already available for you to borrow.
+
+Thanks!
+
+{% endblocktranslate %}
+

@@ -13,3 +13,8 @@ class NavbarItemAdmin(admin.ModelAdmin):
     list_display = ("title", "show_in_navbar", "show_in_footer")
     list_filter = ("show_in_navbar", "show_in_footer")
     inlines = (PageLinkInline,)
+
+
+from django.contrib.sessions.models import Session
+
+admin.site.register(Session)
